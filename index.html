@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Lewis™ - Official Artist Page</title>
+    <style>
+        :root {
+            --vibrant-purple: #9c27b0;
+            --glowing-orange: #ff9800;
+            --soft-white: #f5f5f5;
+            --deep-blue: #1a237e;
+            --dark-bg: #121212;
+            --dark-gray: #333;
+            --footer-bg: #0a0a0a;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: var(--soft-white);
+            background-color: var(--dark-bg);
+            scroll-behavior: smooth;
+        }
+        section {
+            min-height: 100vh;
+            padding: 80px 5% 40px;
+            box-sizing: border-box;
+        }
+        .hero {
+            background-image: url('/mnt/data/photo_2024-10-08_15-26-38.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(18, 18, 18, 0.6);
+        }
+        .hero-content {
+            z-index: 1;
+        }
+        h1, h2 {
+            font-size: 3.5em;
+            margin-bottom: 0.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        h1 span, h2 span {
+            border-bottom: 4px solid var(--glowing-orange);
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 1.5em;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .cta-button {
+            padding: 12px 24px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .cta-primary {
+            background-color: var(--vibrant-purple);
+            color: var(--soft-white);
+            box-shadow: 0 0 15px var(--vibrant-purple);
+        }
+        .cta-secondary {
+            background-color: transparent;
+            color: var(--soft-white);
+            border: 2px solid var(--soft-white);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(18,18,18,0.8);
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--soft-white);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--glowing-orange);
+        }
+        .social-icons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+        .social-icons a {
+            color: var (--soft-white);
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var (--glowing-orange);
+            transform: scale(1.2);
+        }
+        .music-player, .gallery, .video-container {
+            background-color: rgba(26,35,126,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .video-container {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .contact {
+            background-color: var(--dark-gray);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid var(--vibrant-purple);
+            background-color: var(--dark-bg);
+            color: var(--soft-white);
+        }
+        .contact input[type="submit"] {
+            background-color: var(--vibrant-purple);
+            color: var(--soft-white);
+            cursor: pointer;
+            border: none;
+            width: 50%;
+            box-shadow: 0 0 10px var(--vibrant-purple);
+        }
+        .contact input[type="submit"]:hover {
+            background-color: var(--glowing-orange);
+            box-shadow: 0 0 15px var(--glowing-orange);
+        }
+        footer {
+            background-color: var(--footer-bg);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: var(--soft-white);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <a href="#hero" class="logo">Benjamin Lewis™</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#videos">Videos</a>
+        </div>
+    </nav>
+
+    <div class="social-icons">
+        <a href="https://youtube.com/@benjaminlewismusic?si=_YnJjMomteSpXnse" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/_benjaminlewis" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://open.spotify.com/artist/5WDwuMr7g76vJ6s7El0y2U" target="_blank"><i class="fab fa-spotify"></i></a>
+    </div>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Experience <span>Benjamin Lewis™</span></h1>
+            <p>Unleash the power of sound and emotion</p>
+            <div class="cta-buttons">
+                <a href="#music" class="cta-button cta-primary">Listen Now</a>
+                <a href="#contact" class="cta-button cta-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About <span>Benjamin Lewis™</span></h2>
+        <p>Benjamin Lewis™ stands for a versatile and passionate musician whose artistry is shaped by years of dedication and exploration. Known for his dynamic performances and emotionally resonant music, Ben’s sound is a reflection of his personal journey and diverse influences. His debut EP, <em>High In The Sky</em>, encapsulates his evolution as an artist, blending various genres to create a unique and cohesive experience for listeners.</p>
+        <p>Driven by a deep love for music, Ben seeks to connect with audiences through thought-provoking lyrics and captivating melodies. His live performances are a testament to his commitment to pushing creative boundaries, delivering not just a concert, but an unforgettable experience.</p>
+        <p>Benjamin Lewis™ entertainment services include live visual and audio musical performances, concerts, and appearances as a singer and performing artist. These also include music and songwriting composition for others, the production of musical sound recordings, and the development, creation, and post-production of musical projects.</p>
+        <p>With a growing fanbase and a vision for the future, Benjamin Lewis™ is making his mark in the music industry as a singer, songwriter, and performer.</p>
+    </section>
+
+    <section id="music">
+        <h2>Latest <span>Releases</span></h2>
+        <p>Experience the latest tracks from Benjamin Lewis™. Each song is a journey through sound and emotion.</p>
+        <div class="music-player">
+            <iframe src="https://open.spotify.com/embed/track/0KRreYw7PpOV6lJxQqc5n3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/2Zh37n7DfXDVw24yMnc7B9" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/3PTALzk85qTTHFJcKbr0Lm" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/53t7jcBYAWHXHPUuexGzjh" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="/mnt/data/photo_2024-10-08_15-26-38.jpg" alt="Gallery Image 1">
+            <img src="/mnt/data/photo_2024-10-08_15-26-54.jpg" alt="Gallery Image 2">
+            <img src="/mnt/data/photo_2024-10-08_15-26-59.jpg" alt="Gallery Image 3">
+            <img src="/mnt/data/photo_2024-10-08_15-27-03.jpg" alt="Gallery Image 4">
+            <img src="/mnt/data/photo_2024-10-08_15-27-09.jpg" alt="Gallery Image 5">
+            <img src="/mnt/data/photo_2024-10-08_15-27-13.jpg" alt="Gallery Image 6">
+            <img src="/mnt/data/photo_2024-10-08_15-27-17.jpg" alt="Gallery Image 7">
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2>Videos</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/LVYk8w_NJZg" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/r4R8BTQWQA8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/uZWRUmd6GWk" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/3LkkY1s4Dh4" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact for Show Bookings</h2>
+        <p>Interested in booking Benjamin Lewis™ for your event? Fill out the form below and we'll get back to you!</p>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            <input type="submit" value="Send">
+        </form>
+    </section>
+
+    <footer>
+        <p>*Benjamin Lewis™ is a trademark owned by Ben Yehuda Izhak Halevy</p>
+    </footer>
+</body>
+</html>
